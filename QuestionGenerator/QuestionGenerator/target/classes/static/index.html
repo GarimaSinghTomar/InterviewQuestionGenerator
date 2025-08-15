@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Interview Question Generator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h2>AI Interview Question Generator</h2>
+
+    <label>Job Role:</label>
+    <select id="role" onchange="toggleCustomRole()">
+        <option value="Software Developer">Software Developer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Project Manager">Project Manager</option>
+        <option value="other">Other</option>
+    </select>
+
+    <!-- Hidden custom role input -->
+    <div id="customRoleContainer" style="display:none; margin-top:5px;">
+        <input type="text" id="customRole" placeholder="Enter your role" />
+    </div>
+
+    <label style="margin-top:10px;">Experience:</label>
+    <select id="experience">
+        <option value="Fresher">Fresher</option>
+        <option value="1-3 years">1-3 years</option>
+        <option value="3+ years">3+ years</option>
+    </select>
+
+    <button onclick="generate()" style="margin-top:10px;">Generate Questions</button>
+
+    <h3>Result:</h3>
+    <div id="result" style="margin-top:20px;"></div>
+
+    <script>
+        function toggleCustomRole() {
+            const roleSelect = document.getElementById('role');
+            const customRoleContainer = document.getElementById('customRoleContainer');
+            if (roleSelect.value === 'other') {
+                customRoleContainer.style.display = 'block';
+            } else {
+                customRoleContainer.style.display = 'none';
+            }
+        }
+
+        async function generate() {
+            let roleSelect = document.getElementById('role');
+            let role = roleSelect.value === "other"
+                ? document.getElementById('customRole').value.trim()
+                : roleSelect.value;
+
+            const experience = document.getElementById('experience').value;
+
+            if (!role) {
+                alert("Please enter a valid job role.");
+                return;
+            }
+
+            const res = await fetch('http://localhost:8080/api/generate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: `role=${encodeURIComponent(role)}&experience=${encodeURIComponent(experience)}`
+            });
+
+            const data = await res.text();
+            document.getElementById('result').innerText = data;
+        }
+    </script>
+</body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Interview Question Generator</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        #customRole {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>AI Interview Question Generator</h2>
+
+    <label>Job Role:</label>
+    <select id="role" onchange="checkOtherRole()">
+        <option value="Software Developer">Software Developer</option>
+        <option value="Data Analyst">Data Analyst</option>
+        <option value="Project Manager">Project Manager</option>
+        <option value="other">Other</option>
+    </select>
+
+    <input type="text" id="customRole" placeholder="Enter your role" />
+
+    <label>Experience:</label>
+    <select id="experience">
+        <option value="Fresher">Fresher</option>
+        <option value="1-3 years">1-3 years</option>
+        <option value="3+ years">3+ years</option>
+    </select>
+
+    <button onclick="generate()">Generate Questions</button>
+
+    <h3>Result:</h3>
+    <div id="result" style="margin-top:20px;"></div>
+
+    <script>
+        function checkOtherRole() {
+            let roleSelect = document.getElementById("role");
+            let customRoleInput = document.getElementById("customRole");
+            if (roleSelect.value === "other") {
+                customRoleInput.style.display = "block";
+            } else {
+                customRoleInput.style.display = "none";
+            }
+        }
+
+        function generate() {
+            let roleSelect = document.getElementById("role");
+            let experience = document.getElementById("experience").value;
+            let role = roleSelect.value === "other"
+                ? document.getElementById("customRole").value.trim()
+                : roleSelect.value;
+
+            if (!role) {
+                alert("Please enter a valid job role.");
+                return;
+            }
+
+            // Call backend API here
+            console.log("Generating for:", role, experience);
+        }
+    </script>
+</body>
+</html>
+-->
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Interview Question Generator</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <h2>AI Interview Question Generator</h2>
+    <label>Job Role:</label>
+    <select id="role">
+        <option>Software Developer</option>
+        <option>Data Analyst</option>
+        <option>Project Manager</option>
+     
+    </select>
+     <input type="text" id="customRole" placeholder="Enter your role" />
+    <label>Experience:</label>
+    <select id="experience">
+        <option>Fresher</option>
+        <option>1-3 years</option>
+        <option>3+ years</option>
+    </select>
+    <button onclick="generate()">Generate Questions</button>
+
+    <h3>Result:</h3>
+    <div id="result" style="margin-top:20px;"></div>
+    <script src="script.js"></script>
+      
+</body>
+</html>
+-->

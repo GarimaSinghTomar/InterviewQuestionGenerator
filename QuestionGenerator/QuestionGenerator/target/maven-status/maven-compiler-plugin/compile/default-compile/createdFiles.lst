@@ -1,0 +1,3 @@
+com\example\QuestionGenerator\service\AIService.class
+com\example\QuestionGenerator\QuestionGeneratorApplication.class
+com\example\QuestionGenerator\controller\InterviewController.class
