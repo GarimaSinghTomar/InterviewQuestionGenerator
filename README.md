@@ -52,9 +52,9 @@ Data Processing: Jackson (JSON Parsing)
 
 ⚙️ Setup & Installation
 1️⃣ Clone the Repository
-git clone https://github.com/your-username/InterviewQuestionGenerator.git
+git clone https://github.com/your-username/QuestionGenerator.git
 
-cd InterviewQuestionGenerator
+cd QuestionGenerator
 
 2️⃣ Backend Setup (Spring Boot)
 
