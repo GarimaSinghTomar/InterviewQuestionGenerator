@@ -27,21 +27,33 @@ AI Integration: OpenRouter API
 Data Processing: Jackson (JSON Parsing)
 
 📂 Project Structure
+
 /src
+
    /main
+   
       /java
+      
          /controller      # API endpoints
+         
          /service         # AI integration logic
+         
       /resources
+      
          application.properties  # API keys & config
+         
 /public
+
    index.html             # Frontend UI
+   
    script.js              # Frontend logic
+   
    style.css              # Styling
 
 ⚙️ Setup & Installation
 1️⃣ Clone the Repository
 git clone https://github.com/your-username/ai-interview-question-generator.git
+
 cd ai-interview-question-generator
 
 2️⃣ Backend Setup (Spring Boot)
